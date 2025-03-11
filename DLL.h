@@ -15,7 +15,7 @@ struct Node {
 struct Node* MyDLLInit(uint16_t size);
 void MyDLLInsert();
 int MyDLLRemove(struct Node *dll, uint16_t key, int size);
-void MyDLLFind();
+char *MyDLLFind(struct Node *dll, uint16_t key);
 void MyDLLFindNext();
 void MyDLLFindPrevious();
 
