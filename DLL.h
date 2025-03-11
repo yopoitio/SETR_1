@@ -12,9 +12,9 @@ struct Node {
     struct Node* next;
 };
 
-void MyDLLInit();
+struct Node* MyDLLInit(uint16_t size);
 void MyDLLInsert();
-void MyDLLRemove();
+int MyDLLRemove(struct Node *dll, uint16_t key, int size);
 void MyDLLFind();
 void MyDLLFindNext();
 void MyDLLFindPrevious();

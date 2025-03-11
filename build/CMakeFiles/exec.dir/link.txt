@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/exec.dir/main.c.o CMakeFiles/exec.dir/DLL.c.o -o exec 
