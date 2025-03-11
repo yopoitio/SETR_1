@@ -27,7 +27,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
             dll[i].next = NULL;
 
             struct Node *current = dll;
-            while (current != NULL) {
+            while (current->next != NULL) {
                 if ((current->key > newKey && (current->next == NULL || current->next->key <= newKey)) 
                     || (current->key == newKey)) {
                     dll[i].next = current->next;
@@ -85,4 +85,14 @@ void MyDLLFindNext(){
 
 void MyDLLFindPrevious(){
 
+}
+
+void MyDLLPrint(struct Node *dll, int size) {
+    struct Node *current = dll;
+    printf("DLL: ");
+    while (current->next != NULL) {
+        printf("%d:%s -> ", current->key, current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
 }
