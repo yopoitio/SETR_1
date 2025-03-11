@@ -68,8 +68,15 @@ int MyDLLRemove(struct Node *dll, uint16_t key, int size) {
     return -1;
 }
 
-void MyDLLFind() {
-
+char *MyDLLFind(struct Node *dll, uint16_t key) {
+    struct Node *current = dll;
+    while (current->next != NULL) {
+        if (current->key == key) {
+            return current->data;
+        }
+        current = current->next;
+    }
+    return NULL;
 }
 
 void MyDLLFindNext(){
