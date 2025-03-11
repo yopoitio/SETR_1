@@ -18,5 +18,6 @@ int MyDLLRemove(struct Node *dll, uint16_t key, int size);
 char *MyDLLFind(struct Node *dll, uint16_t key);
 void MyDLLFindNext();
 void MyDLLFindPrevious();
+void MyDLLPrint(struct Node *dll, int size);
 
 #endif // DLL_H
