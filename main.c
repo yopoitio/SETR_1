@@ -11,5 +11,9 @@ int main() {
     printf("%d\n", err);
     err = MyDLLRemove(dll, 2, SIZE);
     printf("%d\n", err);
+    err = MyDLLInsert(dll, 2, "Goodbye", SIZE);
+    printf("%d\n", err);
+    char *data = MyDLLFindPrevious(dll, 2);
+    printf("Data on previous of key %d: %s\n",3 ,data);
     return 0;
 }

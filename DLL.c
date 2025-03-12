@@ -120,8 +120,16 @@ void MyDLLFindNext(){
 
 }
 
-void MyDLLFindPrevious(){
-
+char* MyDLLFindPrevious(struct Node *dll, uint16_t key) {
+    struct Node *current = dll;
+    while (current->next!= NULL) {
+        if (current->key == key) {
+            return current->prev->data;
+        }
+        current = current->next;
+    }
+    printf("Error: The previous element was not found.\n");
+    return "";
 }
 
 void MyDLLPrint(struct Node *dll, int size) {
