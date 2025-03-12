@@ -135,19 +135,35 @@ char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size) {
     return NULL;
 }
 
-void MyDLLFindNext(){
-
+char* MyDLLFindNext(struct Node *dll, uint16_t key) {
+    struct Node *current = dll;
+    while (current != NULL) {
+        if (current->next == NULL) {
+            printf("Error: The last element does not have a next one.\n");
+            return "";
+        }
+        if (current->key == key) {
+            return current->next->data;
+        }
+        current = current->next;
+    }
+    printf("Error: The element with the given key was not found.\n");
+    return "";
 }
 
 char* MyDLLFindPrevious(struct Node *dll, uint16_t key) {
     struct Node *current = dll;
-    while (current->next!= NULL) {
+    while (current != NULL) {
+        if (current == dll) {
+            printf("Error: The first element does not have a previous one.\n");
+            return "";
+        }
         if (current->key == key) {
             return current->prev->data;
         }
         current = current->next;
     }
-    printf("Error: The previous element was not found.\n");
+    printf("Error: The element with the given key was not found.\n");
     return "";
 }
 

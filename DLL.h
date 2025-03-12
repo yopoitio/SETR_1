@@ -21,7 +21,7 @@ struct Node* MyDLLInit(uint16_t size);
 void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size);
 void MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size);
 char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size);
-void MyDLLFindNext();
+char *MyDLLFindNext(struct Node *dll, uint16_t key);
 char *MyDLLFindPrevious(struct Node *dll, uint16_t key);
 void MyDLLPrint(struct Node *dll, uint16_t size);
 void MyDLLRestore(struct Node *dll, uint16_t key, uint16_t size);
