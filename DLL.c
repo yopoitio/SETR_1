@@ -1,13 +1,17 @@
 #include "DLL.h"
 
+struct Node *trashbin;
+uint8_t index_ = 0;
+
 struct Node* MyDLLInit(uint16_t size) {
     struct Node *dll = (struct Node*) malloc(sizeof(struct Node)*size);
+    trashbin = (struct Node*) malloc(sizeof(struct Node)*TRASH_SIZE);
 
     for(int i=0;i<size;i++) {
         dll[i].key = 0;
         dll[i].prev = NULL;
         dll[i].next = NULL;
-        for(int j=0;j<8;j++) {
+        for(int j=0;j<DATA_SIZE;j++) {
             dll[i].data[j] = '\0';
         }
     }
@@ -15,7 +19,7 @@ struct Node* MyDLLInit(uint16_t size) {
     return dll;
 }
 
-int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
+void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
     bool isEmpty = true;
     for (int i = 0; i < size; i++) {
         if (dll[i].key != 0) {
@@ -30,7 +34,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         dll[0].prev = NULL;
         dll[0].next = NULL;
         printf("Element added with key %d\n", newKey);
-        return 0;
+        return;
     }
 
     int position = -1;
@@ -42,8 +46,8 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
     }
 
     if (position == -1) {
-        printf("Array is full!\n");
-        return -1;
+        printf("DLL is full! Couldn't insert the element!\n");
+        return;
     }
 
     dll[position].key = newKey;
@@ -67,7 +71,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         if (current != NULL) {
             current->prev = &dll[position];
         }
-        return 0;
+        return;
     }
 
     dll[position].prev = previous;
@@ -80,29 +84,46 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
     }
 
     printf("Element added with key %d\n", newKey);
-    return 0;
+    return;
 }
 
 
-int MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
+void MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
     for(int i=0;i<size;i++) {
         if(dll[i].key == key) {
-            if(dll[i].prev != NULL) {
-                dll[i].prev->next = dll[i].next;
+            bool found = false;
+            for(int j=0;j<TRASH_SIZE;j++) {
+                if(trashbin[j].key == dll[i].key) {
+                    trashbin[j] = dll[i];
+                    found = true;
+                    break;
+                }
             }
-            if(dll[i].next != NULL) {
+            if(!found)
+                trashbin[index_++ % 5] = dll[i];
+                
+
+            if(dll[i].prev == NULL) 
+                dll[i].next->prev = NULL;
+            else
                 dll[i].next->prev = dll[i].prev;
-            }
+
+            if(dll[i].next == NULL)
+                dll[i].prev->next = NULL;
+            else
+                dll[i].prev->next = dll[i].next;
+
+
             dll[i].key = 0;
-            for(int j=0;j<8;j++) {
+            for(int j=0;j<DATA_SIZE;j++) {
                 dll[i].data[j] = '\0';
             }
             printf("Element removed with key %d\n", key);
-            return 0;
+            return;
         }
     }
     printf("Key %d not found\n", key);
-    return -1;
+    return;
 }
 
 char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size) {
@@ -154,4 +175,23 @@ void MyDLLPrint(struct Node *dll, uint16_t size) {
     }
     
     printf("NULL\n\n");
+}
+
+void MyDLLRestore(struct Node *dll, uint16_t key, uint16_t size) {
+    for(int i=0;i<TRASH_SIZE;i++) {
+        if(trashbin[i].key == key) {
+            for(int j=0;j<size;j++) {
+                if(trashbin[i].key == dll[j].key) {
+                    dll[j].key = trashbin[i].key;
+                    strcpy(dll[j].data, trashbin[i].data);
+                    printf("Element added with key %d\n", key);
+                    return;
+                }
+            }
+
+            MyDLLInsert(dll, trashbin[i].key, trashbin[i].data, size);
+            return;
+        }
+    }
+    printf("Key %d not found in trashbin\n", key);
 }

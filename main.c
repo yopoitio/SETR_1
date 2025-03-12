@@ -2,7 +2,6 @@
 #define SIZE 20
 
 int main() {
-    int err;
     char *return_msg;
     struct Node *dll = MyDLLInit(SIZE);
 
@@ -14,32 +13,22 @@ int main() {
         printf("Key found with data: %s\n", return_msg);
     }
 
-    err = MyDLLInsert(dll, 1, "Hello", SIZE);
-    if(err==-1) {
-        printf("Error found at MyDLLInsert\n");
-    }
+    MyDLLInsert(dll, 1, "Hello", SIZE);
 
-    err = MyDLLInsert(dll, 3, "!", SIZE);
-    if(err==-1) {
-        printf("Error found at MyDLLInsert\n");
-    }
+    MyDLLInsert(dll, 3, "!", SIZE);
 
-    err = MyDLLInsert(dll, 2, "World", SIZE);
-    if(err==-1) {
-        printf("Error found at MyDLLInsert\n");
-    }
+    MyDLLInsert(dll, 2, "World", SIZE);
 
-    err = MyDLLRemove(dll, 2, SIZE);
-    if(err==-1) {
-        printf("Error found at MyDLLRemove\n");
-    }
+    MyDLLRemove(dll, 2, SIZE);
 
-    err = MyDLLInsert(dll, 2, "Goodbye", SIZE);
-    if(err==-1) {
-        printf("Error found at MyDLLInsert\n");
-    }
+    MyDLLInsert(dll, 2, "Goodbye", SIZE);
 
     MyDLLPrint(dll, SIZE);
+
+    MyDLLRemove(dll, 2, SIZE);
+    MyDLLInsert(dll, 2, "Hi", SIZE);
+    MyDLLRemove(dll, 2, SIZE);
+    MyDLLRestore(dll, 2, SIZE);
 
     return_msg = MyDLLFind(dll, 2, SIZE);
     if(return_msg==NULL) {
@@ -48,5 +37,6 @@ int main() {
     else {
         printf("Key found with data: %s\n", return_msg);
     }
+    MyDLLPrint(dll, SIZE);
     return 0;
 }
