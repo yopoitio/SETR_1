@@ -47,7 +47,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
     return -1;
 }
 
-int MyDLLRemove(struct Node *dll, uint16_t key, int size) {
+int MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
     for(int i=0;i<size;i++) {
         if(dll[i].key == key) {
             if(dll[i].prev != NULL) {
