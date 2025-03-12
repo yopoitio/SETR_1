@@ -29,7 +29,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         strcpy(dll[0].data, data);
         dll[0].prev = NULL;
         dll[0].next = NULL;
-        printf("Element added with key: %d\n", newKey);
+        printf("Element added with key %d\n", newKey);
         return 0;
     }
 
@@ -79,7 +79,7 @@ int MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         current->prev = &dll[position];
     }
 
-    printf("Element added with key: %d\n", newKey);
+    printf("Element added with key %d\n", newKey);
     return 0;
 }
 
@@ -97,7 +97,7 @@ int MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
             for(int j=0;j<8;j++) {
                 dll[i].data[j] = '\0';
             }
-            printf("Key %d removed\n", key);
+            printf("Element removed with key %d\n", key);
             return 0;
         }
     }
@@ -105,13 +105,11 @@ int MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
     return -1;
 }
 
-char *MyDLLFind(struct Node *dll, uint16_t key) {
-    struct Node *current = dll;
-    while (current->next != NULL) {
-        if (current->key == key) {
-            return current->data;
+char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size) {
+    for(int i=0;i<size;i++) {
+        if(dll[i].key == key) {
+            return dll[i].data;
         }
-        current = current->next;
     }
     return NULL;
 }
@@ -132,12 +130,28 @@ char* MyDLLFindPrevious(struct Node *dll, uint16_t key) {
     return "";
 }
 
-void MyDLLPrint(struct Node *dll, int size) {
+void MyDLLPrint(struct Node *dll, uint16_t size) {
     struct Node *current = dll;
+    uint16_t smallerkey = UINT16_MAX;
+
+    for(int i=0;i<size;i++) {
+        if(dll[i].key!= 0 && dll[i].key < smallerkey) {
+            smallerkey = dll[i].key;
+            current=&dll[i];
+        } 
+    }
+
+    if(smallerkey==UINT16_MAX) {
+        printf("DLL Empty\n\n");
+        return;
+    }
+
     printf("DLL: ");
-    while (current->next != NULL) {
+
+    while (current != NULL) {
         printf("%d:%s -> ", current->key, current->data);
         current = current->next;
     }
-    printf("NULL\n");
+    
+    printf("NULL\n\n");
 }
