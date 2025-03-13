@@ -110,6 +110,13 @@ void test_restore_and_insert() {
         MyDLLRestore(dll, i, SIZE);
     }
     MyDLLPrint(dll, SIZE);
+
+    MyDLLRemove(dll, 2, SIZE);
+    MyDLLPrint(dll, SIZE);
+    MyDLLInsert(dll, 2, "Hi!!!", SIZE);
+    MyDLLPrint(dll, SIZE);
+    MyDLLRestore(dll, 2, SIZE);
+    MyDLLPrint(dll, SIZE);
 }
 
 void test_find_after_restore() {
