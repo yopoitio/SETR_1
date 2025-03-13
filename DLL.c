@@ -7,7 +7,7 @@ struct Node* MyDLLInit(uint16_t size) {
     struct Node *dll = (struct Node*) malloc(sizeof(struct Node)*size);
     trashbin = (struct Node*) malloc(sizeof(struct Node)*TRASH_SIZE);
 
-    for(int i=0;i<size;i++) {
+    for (int i=0; i < size; i++) {
         dll[i].key = 0;
         dll[i].prev = NULL;
         dll[i].next = NULL;
@@ -25,6 +25,13 @@ void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         if (dll[i].key != 0) {
             isEmpty = false;
             break;
+        }
+    }
+
+    for (int i = 0; i < size; i++) {
+        if (dll[i].key == newKey) {
+            printf("Key already exists! Element not added.\n");
+            return;
         }
     }
 
@@ -89,33 +96,33 @@ void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
 
 
 void MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
-    for(int i=0;i<size;i++) {
-        if(dll[i].key == key) {
+    for (int i=0; i < size; i++) {
+        if (dll[i].key == key) {
             bool found = false;
-            for(int j=0;j<TRASH_SIZE;j++) {
-                if(trashbin[j].key == dll[i].key) {
+            for (int j=0; j < TRASH_SIZE; j++) {
+                if (trashbin[j].key == dll[i].key) {
                     trashbin[j] = dll[i];
                     found = true;
                     break;
                 }
             }
-            if(!found)
+            if (!found)
                 trashbin[index_++ % 5] = dll[i];
                 
 
-            if(dll[i].prev == NULL) 
+            if (dll[i].prev == NULL) 
                 dll[i].next->prev = NULL;
             else
                 dll[i].next->prev = dll[i].prev;
 
-            if(dll[i].next == NULL)
+            if (dll[i].next == NULL)
                 dll[i].prev->next = NULL;
             else
                 dll[i].prev->next = dll[i].next;
 
 
             dll[i].key = 0;
-            for(int j=0;j<DATA_SIZE;j++) {
+            for (int j=0; j < DATA_SIZE; j++) {
                 dll[i].data[j] = '\0';
             }
             printf("Element removed with key %d\n", key);
@@ -127,8 +134,8 @@ void MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size) {
 }
 
 char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size) {
-    for(int i=0;i<size;i++) {
-        if(dll[i].key == key) {
+    for (int i=0; i < size; i++) {
+        if (dll[i].key == key) {
             return dll[i].data;
         }
     }
@@ -139,7 +146,7 @@ char* MyDLLFindNext(struct Node *dll, uint16_t key) {
     struct Node *current = dll;
     while (current != NULL) {
         if (current->next == NULL) {
-            //printf("Error: The last element does not have a next one.\n");
+            printf("Error: The last element does not have a next one.\n");
             return NULL;
         }
         if (current->key == key) {
@@ -147,15 +154,15 @@ char* MyDLLFindNext(struct Node *dll, uint16_t key) {
         }
         current = current->next;
     }
-    //printf("Error: The element with the given key was not found.\n");
+    printf("Error: The element with the given key was not found.\n");
     return NULL;
 }
 
 char* MyDLLFindPrevious(struct Node *dll, uint16_t key) {
     struct Node *current = dll;
     while (current != NULL) {
-        if (current == dll) {
-            //printf("Error: The first element does not have a previous one.\n");
+        if (current == dll && current->key == key) {
+            printf("Error: The first element does not have a previous one.\n");
             return NULL;
         }
         if (current->key == key) {
@@ -163,7 +170,7 @@ char* MyDLLFindPrevious(struct Node *dll, uint16_t key) {
         }
         current = current->next;
     }
-    //printf("Error: The element with the given key was not found.\n");
+    printf("Error: The element with the given key was not found.\n");
     return NULL;
 }
 
@@ -171,14 +178,14 @@ void MyDLLPrint(struct Node *dll, uint16_t size) {
     struct Node *current = dll;
     uint16_t smallerkey = UINT16_MAX;
 
-    for(int i=0;i<size;i++) {
-        if(dll[i].key!= 0 && dll[i].key < smallerkey) {
+    for (int i = 0; i < size; i++) {
+        if (dll[i].key != 0 && dll[i].key < smallerkey) {
             smallerkey = dll[i].key;
-            current=&dll[i];
+            current = &dll[i];
         } 
     }
 
-    if(smallerkey==UINT16_MAX) {
+    if (smallerkey == UINT16_MAX) {
         printf("DLL Empty\n\n");
         return;
     }
@@ -186,7 +193,7 @@ void MyDLLPrint(struct Node *dll, uint16_t size) {
     printf("DLL: ");
 
     while (current != NULL) {
-        printf("%d:%s -> ", current->key, current->data);
+        printf("%d: '%s' -> ", current->key, current->data);
         current = current->next;
     }
     
@@ -194,10 +201,10 @@ void MyDLLPrint(struct Node *dll, uint16_t size) {
 }
 
 void MyDLLRestore(struct Node *dll, uint16_t key, uint16_t size) {
-    for(int i=0;i<TRASH_SIZE;i++) {
-        if(trashbin[i].key == key) {
-            for(int j=0;j<size;j++) {
-                if(trashbin[i].key == dll[j].key) {
+    for (int i=0; i < TRASH_SIZE; i++) {
+        if (trashbin[i].key == key) {
+            for (int j=0; j < size; j++) {
+                if (trashbin[i].key == dll[j].key) {
                     dll[j].key = trashbin[i].key;
                     strcpy(dll[j].data, trashbin[i].data);
                     printf("Element added with key %d\n", key);
