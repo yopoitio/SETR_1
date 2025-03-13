@@ -102,7 +102,6 @@ void test_restore_and_insert() {
     MyDLLInsert(dll, 14, "trashbin", SIZE);
     MyDLLInsert(dll, 15, "!!!", SIZE);
     MyDLLPrint(dll, SIZE);
-    MyDLLPrint(dll, SIZE);
     for(int i=10; i<=15; i++) {
         MyDLLRemove(dll, i, SIZE);
     }

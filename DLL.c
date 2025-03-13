@@ -215,11 +215,12 @@ void MyDLLRestore(struct Node *dll, uint16_t key, uint16_t size) {
                 if (trashbin[i].key == dll[j].key) {
                     dll[j].key = trashbin[i].key;
                     strcpy(dll[j].data, trashbin[i].data);
-                    printf("Element added with key %d\n", key);
+                    printf("Restored: Element added with key %d\n", key);
                     return;
                 }
             }
 
+            printf("Restored: ");
             MyDLLInsert(dll, trashbin[i].key, trashbin[i].data, size);
             return;
         }
