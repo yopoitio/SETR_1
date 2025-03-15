@@ -1,3 +1,18 @@
+/**
+ * @file main.c
+ * @brief Test suite for the Doubly Linked List (DLL) implementation.
+ *
+ * This file contains a series of tests to validate the functionality 
+ * of the Doubly Linked List (DLL) implementation defined in DLL.h.
+ * The tests include insertion, removal, search, and restoration of nodes.
+ *
+ * @author 107465 Rafaek Almeida
+ * @author 107838 Afonso Vaz
+ * @date March 14, 2025
+ * @bug No known bugs.
+ * @version 1.0
+ */
+
 #include "DLL.h"
 #define SIZE 20
 
@@ -150,6 +165,15 @@ void test_insert_and_init() {
 
     MyDLLPrint(dll, SIZE);
 }
+
+/**
+ * @brief Main function to execute all DLL tests.
+ *
+ * Initializes the DLL and executes all test functions sequentially.
+ * Ensures the correctness of DLL operations.
+ *
+ * @return Always returns 0 if all tests pass.
+ */
 int main() {
     dll = MyDLLInit(SIZE);
 

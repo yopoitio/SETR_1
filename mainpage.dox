@@ -1,0 +1,46 @@
+/*!
+ * \mainpage Doubly Linked List (DLL) Library
+ *
+ * \section intro_sec Introduction
+ * The Doubly Linked List (DLL) library provides an implementation of a linked data structure
+ * where each node maintains references to both its previous and next elements.
+ * This allows for efficient insertion, deletion, and traversal operations in both directions.
+ *
+ * The library supports key-based node insertion, removal, searching, and restoration.
+ * Each node consists of:
+ * - A unique key (`key`)
+ * - A fixed-size data array (`data`)
+ * - Pointers to the previous and next nodes (`prev`, `next`)
+ *
+ * \section features_sec Features
+ * - Dynamic insertion and removal of nodes.
+ * - Bidirectional navigation using previous and next pointers.
+ * - Search functions for finding nodes based on their key.
+ * - Restoration of removed elements.
+ * - List printing functionality for visualization.
+ *
+ * \section usage_sec Usage
+ * To use the DLL library, include `DLL.h` in your project and link it with its corresponding implementation.
+ *
+ * Example usage:
+ * \code{.c}
+ * #include "DLL.h"
+ *
+ * struct Node* list = MyDLLInit(10); // Initialize list with size 10
+ * MyDLLInsert(list, 1, "Data1", 10);
+ * MyDLLInsert(list, 2, "Data2", 10);
+ * MyDLLPrint(list, 10);
+ * char *found = MyDLLFind(list, 1);
+ * if (found) printf("Found: %s\n", found);
+ * MyDLLRemove(list, 1, 10);
+ * \endcode
+ *
+ * \section authors_sec Authors
+ * - 107465 Rafael Almeida
+ * - 107838 Afonso Vaz
+ *
+ * \section version_sec Version
+ * - Version: 1.0
+ * - Date: March 14, 2025
+ * - No known bugs.
+ */
