@@ -19,6 +19,16 @@
 char *return_msg;
 struct Node *dll;
 
+/**
+ * @brief Test function for inserting and removing elements in the Doubly Linked List.
+ * 
+ * This function tests the MyDLLInsert and MyDLLRemove functions. It performs various operations 
+ * including edge cases by inserting the kye 0.
+ * 
+ * @note This function assumes that the global variables 'dll' and 'SIZE' are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_insert_and_remove() {
     printf("\n-----------------------------------------------\n");
     printf("      Testing MyDLLInsert and MyDLLRemove\n");
@@ -40,6 +50,18 @@ void test_insert_and_remove() {
     MyDLLInsert(dll, 0, "Try key 0", SIZE);
 }
 
+/**
+ * @brief Test function for the MyDLLFind operation in the Doubly Linked List.
+ *
+ * This function tests the MyDLLFind function. It searches for a key in the
+ * list and another one not present in the DLL. Return's the data when present
+ * and NUll otherwise.
+ *
+ * @note This function assumes that the global variables 'dll', 'return_msg',
+ *       and 'SIZE' are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_find() {
     printf("\n-----------------------\n");
     printf("   Testing MyDLLFind\n");
@@ -61,6 +83,18 @@ void test_find() {
     }
 }
 
+/**
+ * @brief Test function for MyDLLFindPrevious and MyDLLFindNext operations.
+ * 
+ * This function tests the MyDLLFindPrevious and MyDLLFindNext functions. It 
+ * prints the current state of the list and then performs a series of tests to 
+ * find previous and next elements for various keys in the list.
+ *
+ * @note This function assumes that the global variables 'dll', 'return_msg',
+ *       and 'SIZE' are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_find_previous_and_next() {
     printf("\n----------------------------------------------------\n");
     printf("   Testing MyDLLFindPrevious and MyDLLFindNext\n");
@@ -86,6 +120,19 @@ void test_find_previous_and_next() {
     if (return_msg != NULL) printf("Next element data of element %d: %s\n", 3, return_msg);
 }
 
+/**
+ * @brief Test function for MyDLLRestore and MyDLLInsert operations.
+ * 
+ * This function tests the MyDLLRestore and MyDLLInsert functions. it performs
+ * some insertions and removals to test the restore and insert operations.
+ * The function also test edge cases by inserting the same key twice and restoring
+ * multiple elements.
+ *
+ * @note This function assumes that the global variables 'dll' and 'SIZE'
+ *       are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_restore_and_insert() {
     printf("\n------------------------------------------\n");
     printf("   Testing MyDLLRestore and MyDLLInsert   \n");
@@ -134,6 +181,18 @@ void test_restore_and_insert() {
     MyDLLPrint(dll, SIZE);
 }
 
+/**
+ * @brief Test function for MyDLLFind operation after using MyDLLRestore.
+ * 
+ * This function tests the MyDLLRestore after the MyDLLRestore function. It tries to
+ * find the key restored in the previous function to see if the restauration process
+ * was successful.
+ *
+ * @note This function assumes that the global variables 'dll', 'return_msg',
+ *       and 'SIZE' are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_find_after_restore() {
     printf("\n------------------------------------------\n");
     printf("   Testing MyDLLFind after MyDLLRestore\n");
@@ -148,6 +207,18 @@ void test_find_after_restore() {
     }
 }
 
+/**
+ * @brief Test function for MyDLLInsert and MyDLLInit operations.
+ *
+ * This function tests the MyDLLInsert and MyDLLInit functions. it removes
+ * all elements off the list and then fills the list totally to test the
+ * initialization.
+ *
+ * @note This function assumes that the global variables 'dll' and 'SIZE'
+ *       are properly initialized.
+ *
+ * @return void This function does not return a value.
+ */
 void test_insert_and_init() {
     printf("\n------------------------------------------\n");
     printf("   Testing MyDLLInsert and MyDLLInit\n");
@@ -163,6 +234,33 @@ void test_insert_and_init() {
         MyDLLInsert(dll, i, data,SIZE);
     }
 
+    MyDLLPrint(dll, SIZE);
+}
+
+/**
+ * @brief Test function for the MyDLLRestore operation in the Doubly Linked List.
+ *
+ * This function tests the MyDLLRestore function. It tries to restore a element
+ * not present in the list while the list is full.
+ *
+ * The function uses the following global variables:
+ * @param dll A pointer to the Doubly Linked List structure.
+ * @param SIZE The maximum size of the Doubly Linked List.
+ *
+ * @return void This function does not return a value.
+ */
+void test_restore() {
+    printf("\n--------------------------\n");
+    printf("   Testing MyDLLRestore\n");
+    printf("--------------------------\n");
+    MyDLLPrint(dll, SIZE);
+    MyDLLRemove(dll, 5, SIZE);
+    MyDLLInsert(dll,25,"Test for restore", SIZE);
+    MyDLLPrint(dll, SIZE);
+    MyDLLRemove(dll, 25, SIZE);
+    MyDLLInsert(dll,5,"Element to fill DLL", SIZE);
+    MyDLLPrint(dll, SIZE);
+    MyDLLRestore(dll, 25, SIZE);
     MyDLLPrint(dll, SIZE);
 }
 
@@ -188,6 +286,8 @@ int main() {
     test_find_after_restore();
 
     test_insert_and_init();
+
+    test_restore();
 
     return 0;
 }

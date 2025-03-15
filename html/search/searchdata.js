@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "dm",
+  0: "adfilmuv",
   1: "m",
-  2: "d"
+  2: "dl"
 };
 
 var indexSectionNames =

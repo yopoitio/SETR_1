@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['setr_5f1_103',['SETR_1',['../md_README.html',1,'']]]
+  ['library_0',['Doubly Linked List (DLL) Library',['../index.html',1,'']]],
+  ['linked_20list_20dll_20library_1',['Doubly Linked List (DLL) Library',['../index.html',1,'']]],
+  ['list_20dll_20library_2',['Doubly Linked List (DLL) Library',['../index.html',1,'']]]
 ];
