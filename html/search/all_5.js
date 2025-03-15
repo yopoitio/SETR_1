@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mainpage_2edox_0',['mainpage.dox',['../mainpage_8dox.html',1,'']]]
+  ['next_20',['next',['../structNode.html#af67b110ca1a258b793bf69d306929b22',1,'Node']]],
+  ['node_21',['Node',['../structNode.html',1,'']]]
 ];
