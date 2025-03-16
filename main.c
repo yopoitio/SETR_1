@@ -164,11 +164,11 @@ void test_restore_and_insert() {
     MyDLLInsert(dll, 14, "trashbin", SIZE);
     MyDLLInsert(dll, 15, "!!!", SIZE);
     MyDLLPrint(dll, SIZE);
-    for(int i=10; i<=15; i++) {
+    for(int i = 10; i <= 15; i++) {
         MyDLLRemove(dll, i, SIZE);
     }
     MyDLLPrint(dll, SIZE);
-    for(int i=10; i<=15; i++) {
+    for(int i = 10; i <= 15; i++) {
         MyDLLRestore(dll, i, SIZE);
     }
     MyDLLPrint(dll, SIZE);
@@ -223,13 +223,13 @@ void test_insert_and_init() {
     printf("\n------------------------------------------\n");
     printf("   Testing MyDLLInsert and MyDLLInit\n");
     printf("------------------------------------------\n");
-    for(int i=1; i<=15; i++) 
+    for (int i = 1; i <= 15; i++) 
         MyDLLRemove(dll, i, SIZE);
     MyDLLPrint(dll, SIZE);
 
     char *data = malloc(1);
 
-    for(int i=1; i<=SIZE+1; i++) {
+    for (int i = 1; i <= SIZE + 1; i++) {
         snprintf(data, sizeof(data), "%c", i+64);
         MyDLLInsert(dll, i, data,SIZE);
     }
@@ -255,10 +255,10 @@ void test_restore() {
     printf("--------------------------\n");
     MyDLLPrint(dll, SIZE);
     MyDLLRemove(dll, 5, SIZE);
-    MyDLLInsert(dll,25,"Test for restore", SIZE);
+    MyDLLInsert(dll, 25, "Test for restore", SIZE);
     MyDLLPrint(dll, SIZE);
     MyDLLRemove(dll, 25, SIZE);
-    MyDLLInsert(dll,5,"Element to fill DLL", SIZE);
+    MyDLLInsert(dll, 5, "Element to fill DLL", SIZE);
     MyDLLPrint(dll, SIZE);
     MyDLLRestore(dll, 25, SIZE);
     MyDLLPrint(dll, SIZE);
