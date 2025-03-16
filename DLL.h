@@ -10,7 +10,7 @@
  * The list data structure consists of nodes that contains a key (`key`), 
  * a data array (`data`), and pointers to the previous and next node.
  *
- * @author 107465 Rafaek Almeida
+ * @author 107465 Rafael Almeida
  * @author 107838 Afonso Vaz
  * @date March 14, 2025
  * @bug No known bugs.
