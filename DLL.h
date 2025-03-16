@@ -2,13 +2,13 @@
  * @file DLL.h
  * @brief Implementation of a Doubly Linked List (DLL) library.
  *
- * This module provides the implementation of a doubly linked list 
- * with functionalities for inserting, removing, searching, and restoring nodes. 
- * The list maintains a set of nodes ordered by key and allows an efficient 
- * navigation and manipulation of the elements.
+ * This module provides an implementation of a doubly linked list 
+ * with functionalities like insert, remove, search, and restore node. 
+ * The list contains a set of nodes ordered by their key, allowing an efficient 
+ * way of navigation and manipulation the elements.
  * 
- * The list structure consists of nodes containing a key (`key`), 
- * a data array (`data`), and pointers to the previous and next nodes.
+ * The list data structure consists of nodes that contains a key (`key`), 
+ * a data array (`data`), and pointers to the previous and next node.
  *
  * @author 107465 Rafaek Almeida
  * @author 107838 Afonso Vaz
@@ -32,7 +32,7 @@
  * @struct Node
  * @brief Structure representing a node in the doubly linked list.
  *
- * Each node contains a unique key (`key`), a data array (`data`), 
+ * Each node contains an unique key (`key`), a data array (`data`), 
  * and pointers to the previous (`prev`) and next (`next`) nodes.
  */
 struct Node {
@@ -56,10 +56,17 @@ struct Node* MyDLLInit(uint16_t size);
 
 /**
  * @brief Inserts a new node into the doubly linked list.
- * @param dll Pointer to the list.
- * @param newKey Key of the new node.
- * @param data Data to be stored in the node.
- * @param size Maximum number of nodes in the list.
+ * 
+ * This function inserts a new node into the doubly linked list in the right
+ * position based on the key value. If the list is full or in case of any error, 
+ * the new node is not added.
+ * The insertion of a new node is made with the objective of maintaining the order
+ * of the elements by their keys with the right linked pointers.
+ * 
+ * @param dll Pointer to the first element of the doubly linked list.
+ * @param newKey Key of the new node to be added.
+ * @param data Data to be saved in the node.
+ * @param size The total number of elements in the doubly linked list.
  * 
  * @return void This function does not return a value.
  */
@@ -86,36 +93,47 @@ void MyDLLRemove(struct Node *dll, uint16_t key, uint16_t size);
  * with the specific key. It retrieves the associated data if the element 
  * is present, otherwise, it returns NULL.
  *
- * @param dll Pointer to first element of doubly linked list.
+ * @param dll Pointer to the first element of the doubly linked list.
  * @param key The value to be searched for in the list.
  * @param size The total number of elements in the doubly linked List.
  * 
- * @return char* Pointer to the found element data, or NULL if doesn't exit.
+ * @return char* Pointer to the found element data, or NULL if doesn't exist.
  */
 char *MyDLLFind(struct Node *dll, uint16_t key, uint16_t size);
 
 /**
  * @brief Finds the next node in the doubly linked list.
- * @param dll Pointer to the list.
+ * 
+ * This function searches for the node with the given key and, if found,
+ * returns the data of the next node. If the node is not found, it returns NULL.
+ * 
+ * @param dll Pointer to the first element of the doubly linked list.
  * @param key Key of the current node.
  * 
- * @return Pointer to the data of the next node, or NULL if not found.
+ * @return char* Pointer to the data of the next node, or NULL if doesn't exist.
  */
 char *MyDLLFindNext(struct Node *dll, uint16_t key);
 
 /**
  * @brief Finds the previous node in the doubly linked list.
- * @param dll Pointer to the list.
+ * 
+ * This function searches for the node with the given key and, if found, it
+ * returns the data of the previous node. If the node is not found, it returns NULL.
+ * 
+ * @param dll Pointer to the first element of the doubly linked list.
  * @param key Key of the current node.
  * 
- * @return Pointer to the data of the previous node, or NULL if not found.
+ * @return char* Pointer to the data of the previous node, or NULL if doesn't exist.
  */
 char *MyDLLFindPrevious(struct Node *dll, uint16_t key);
 
 /**
  * @brief Prints the contents of the doubly linked list.
- * @param dll Pointer to the list.
- * @param size Maximum number of nodes in the list.
+ * 
+ * This function prints the doubly linked list node by node, in order of their keys.
+ * 
+ * @param dll Pointer to the first element of the doubly linked list.
+ * @param size The total number of elements in the doubly linked list.
  * 
  * @return void This function does not return a value.
  */

@@ -21,10 +21,11 @@ struct Node* MyDLLInit(uint16_t size) {
 
 void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
     bool isEmpty = true;
-    if(newKey == 0) {
+    if (newKey == 0) {
         printf("Key cannot be zero!\n");
         return;
     }
+    
     for (int i = 0; i < size; i++) {
         if (dll[i].key != 0) {
             isEmpty = false;
@@ -36,62 +37,60 @@ void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
         if (dll[i].key == newKey) {
             printf("Key already exists! Element not added.\n");
             return;
+        } else if (dll->key == 0 && isEmpty) {
+            dll->key = newKey;
+            strcpy(dll[0].data, data);
+            dll->prev = NULL;
+            dll->next = NULL;
+            printf("Element added with key %d\n", newKey);
+            return;
         }
     }
 
-    if (dll[0].key == 0 && isEmpty) {
-        dll[0].key = newKey;
-        strcpy(dll[0].data, data);
-        dll[0].prev = NULL;
-        dll[0].next = NULL;
-        printf("Element added with key %d\n", newKey);
-        return;
-    }
-
+    bool foundFreeSpace = false;
     int position = -1;
     for (int i = 0; i < size; i++) {
         if (dll[i].key == 0) {
+            dll[i].key = newKey;
+            strcpy(dll[i].data, data);
+            dll[i].prev = NULL;
+            dll[i].next = NULL;
             position = i;
+            foundFreeSpace = true;
             break;
         }
     }
 
-    if (position == -1) {
+    if (!foundFreeSpace) {
         printf("DLL is full! Couldn't insert the element!\n");
         return;
     }
 
-    dll[position].key = newKey;
-    strcpy(dll[position].data, data);
-    dll[position].prev = NULL;
-    dll[position].next = NULL;
-
-    struct Node *current = &dll[0];
+    struct Node *current = dll;
     struct Node *previous = NULL;
+    struct Node *newNode = &dll[position];
 
     while (current != NULL) {
-        if (current->key > newKey) {
-            break;
-        }
+        if (current->key > newKey) break;
         previous = current;
         current = current->next;
     }
 
     if (previous == NULL) {
-        dll[position].next = current;
+        newNode->next = current;
         if (current != NULL) {
-            current->prev = &dll[position];
+            current->prev = newNode;
         }
         return;
     }
 
-    dll[position].prev = previous;
-    dll[position].next = current;
+    newNode->prev = previous;
+    newNode->next = current;
     if (previous != NULL) {
-        previous->next = &dll[position];
+        previous->next = newNode;
     }
     if (current != NULL) {
-        current->prev = &dll[position];
+        current->prev = newNode;
     }
 
     printf("Element added with key %d\n", newKey);

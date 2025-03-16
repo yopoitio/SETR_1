@@ -148,13 +148,13 @@ Variables</h2></td></tr>
 <p>This function searches through the doubly linked list seeking an element with the specific key. It retrieves the associated data if the element is present, otherwise, it returns NULL.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dll</td><td>Pointer to first element of doubly linked list. </td></tr>
+    <tr><td class="paramname">dll</td><td>Pointer to the first element of the doubly linked list. </td></tr>
     <tr><td class="paramname">key</td><td>The value to be searched for in the list. </td></tr>
     <tr><td class="paramname">size</td><td>The total number of elements in the doubly linked List.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>char* Pointer to the found element data, or NULL if doesn't exit. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>char* Pointer to the found element data, or NULL if doesn't exist. </dd></dl>
 
 </div>
 </div>
@@ -185,14 +185,15 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the next node in the doubly linked list. </p>
+<p>This function searches for the node with the given key and, if found, returns the data of the next node. If the node is not found, it returns NULL.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dll</td><td>Pointer to the list. </td></tr>
+    <tr><td class="paramname">dll</td><td>Pointer to the first element of the doubly linked list. </td></tr>
     <tr><td class="paramname">key</td><td>Key of the current node.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the data of the next node, or NULL if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>char* Pointer to the data of the next node, or NULL if doesn't exist. </dd></dl>
 
 </div>
 </div>
@@ -223,14 +224,15 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds the previous node in the doubly linked list. </p>
+<p>This function searches for the node with the given key and, if found, it returns the data of the previous node. If the node is not found, it returns NULL.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dll</td><td>Pointer to the list. </td></tr>
+    <tr><td class="paramname">dll</td><td>Pointer to the first element of the doubly linked list. </td></tr>
     <tr><td class="paramname">key</td><td>Key of the current node.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the data of the previous node, or NULL if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>char* Pointer to the data of the previous node, or NULL if doesn't exist. </dd></dl>
 
 </div>
 </div>
@@ -301,12 +303,13 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inserts a new node into the doubly linked list. </p>
+<p>This function inserts a new node into the doubly linked list in the right position based on the key value. If the list is full or in case of any error, the new node is not added. The insertion of a new node is made with the objective of maintaining the order of the elements by their keys with the right linked pointers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dll</td><td>Pointer to the list. </td></tr>
-    <tr><td class="paramname">newKey</td><td>Key of the new node. </td></tr>
-    <tr><td class="paramname">data</td><td>Data to be stored in the node. </td></tr>
-    <tr><td class="paramname">size</td><td>Maximum number of nodes in the list.</td></tr>
+    <tr><td class="paramname">dll</td><td>Pointer to the first element of the doubly linked list. </td></tr>
+    <tr><td class="paramname">newKey</td><td>Key of the new node to be added. </td></tr>
+    <tr><td class="paramname">data</td><td>Data to be saved in the node. </td></tr>
+    <tr><td class="paramname">size</td><td>The total number of elements in the doubly linked list.</td></tr>
   </table>
   </dd>
 </dl>
@@ -341,10 +344,11 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Prints the contents of the doubly linked list. </p>
+<p>This function prints the doubly linked list node by node, in order of their keys.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dll</td><td>Pointer to the list. </td></tr>
-    <tr><td class="paramname">size</td><td>Maximum number of nodes in the list.</td></tr>
+    <tr><td class="paramname">dll</td><td>Pointer to the first element of the doubly linked list. </td></tr>
+    <tr><td class="paramname">size</td><td>The total number of elements in the doubly linked list.</td></tr>
   </table>
   </dd>
 </dl>
