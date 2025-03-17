@@ -247,6 +247,9 @@ void test_insert_and_init() {
  * @param dll A pointer to the Doubly Linked List structure.
  * @param SIZE The maximum size of the Doubly Linked List.
  *
+ * @note This function assumes that the global variables 'dll' and 'SIZE'
+ *       are properly initialized.
+ * 
  * @return void This function does not return a value.
  */
 void test_restore() {
@@ -268,7 +271,9 @@ void test_restore() {
  * @brief Main function to execute all DLL tests.
  *
  * Initializes the DLL and executes all test functions sequentially.
- * Ensures the correctness of DLL operations.
+ * 
+ * @note This function assumes that the global variables 'dll' and 'SIZE'
+ *       are properly initialized.
  *
  * @return Always returns 0 if all tests pass.
  */
