@@ -34,6 +34,15 @@ struct Node* MyDLLInit(uint16_t size) {
             dll[i].data[j] = '\0';
         }
     }
+
+    for (int i = 0; i < TRASH_SIZE; i++) {
+        trashbin[i].key = 0;
+        trashbin[i].prev = NULL;
+        trashbin[i].next = NULL;
+        for(int j = 0;j < DATA_SIZE; j++) {
+            trashbin[i].data[j] = '\0';
+        }
+    }
     printf("DLL initialized with size %d\n", size);
     return dll;
 }
