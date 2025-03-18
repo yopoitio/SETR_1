@@ -1,5 +1,24 @@
 #include "DLL.h"
 
+/** 
+ * @file DLL.c
+ * @brief Implementation of a Doubly Linked List (DLL) module.
+ *
+ * This module provides an implementation of a doubly linked list 
+ * with functionalities like insert, remove, search, and restore node. 
+ * The list contains a set of nodes ordered by their key, allowing an efficient 
+ * way of navigation and manipulation the elements.
+ * 
+ * The list data structure consists of nodes that contains a key (`key`), 
+ * a data array (`data`), and pointers to the previous and next node.
+ *
+ * @author 107465 Rafael Almeida
+ * @author 107838 Afonso Vaz
+ * @date March 14, 2025
+ * @bug No known bugs.
+ * @version 1.0
+ */
+
 struct Node *trashbin;
 uint8_t index_ = 0;
 

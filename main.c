@@ -1,12 +1,12 @@
 /**
  * @file main.c
- * @brief Test suite for the Doubly Linked List (DLL) implementation.
+ * @brief Test set for the Doubly Linked List (DLL) implementation.
  *
  * This file contains a series of tests to validate the functionality 
  * of the Doubly Linked List (DLL) implementation defined in DLL.h.
  * The tests include insertion, removal, search, and restoration of nodes.
  *
- * @author 107465 Rafaek Almeida
+ * @author 107465 Rafael Almeida
  * @author 107838 Afonso Vaz
  * @date March 14, 2025
  * @bug No known bugs.

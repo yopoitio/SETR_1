@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['size_24',['SIZE',['../main_8c.html#a70ed59adcb4159ac551058053e649640',1,'main.c']]]
+  ['next_0',['next',['../structNode.html#af67b110ca1a258b793bf69d306929b22',1,'Node']]],
+  ['node_1',['Node',['../structNode.html',1,'']]]
 ];
