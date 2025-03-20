@@ -23,7 +23,7 @@ struct Node *dll;
  * @brief Test function for inserting and removing elements in the Doubly Linked List.
  * 
  * This function tests the MyDLLInsert and MyDLLRemove functions. It performs various operations 
- * including edge cases by inserting the kye 0.
+ * including edge cases by inserting the key 0.
  * 
  * @note This function assumes that the global variables 'dll' and 'SIZE' are properly initialized.
  *
@@ -54,7 +54,7 @@ void test_insert_and_remove() {
  * @brief Test function for the MyDLLFind operation in the Doubly Linked List.
  *
  * This function tests the MyDLLFind function. It searches for a key in the
- * list and another one not present in the DLL. Return's the data when present
+ * list and another one not present in the DLL. Returns the data when present
  * and NUll otherwise.
  *
  * @note This function assumes that the global variables 'dll', 'return_msg',
