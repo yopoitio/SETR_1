@@ -26,7 +26,8 @@ struct Node* MyDLLInit(uint16_t size) {
     struct Node *dll = (struct Node*) malloc(sizeof(struct Node)*size);
     trashbin = (struct Node*) malloc(sizeof(struct Node)*TRASH_SIZE);
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+    {
         dll[i].key = 0;
         dll[i].prev = NULL;
         dll[i].next = NULL;
@@ -47,7 +48,7 @@ struct Node* MyDLLInit(uint16_t size) {
     return dll;
 }
 
-void MyDLLInsert(struct Node *dll, uint16_t newKey, char* data, uint16_t size) {
+void MyDLLInsert(struct Node *dll, uint16_t newKey, char *data, uint16_t size) {
     if (newKey == 0) {
         printf("Key cannot be zero!\n");
         return;

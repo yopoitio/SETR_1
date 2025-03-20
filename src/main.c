@@ -252,7 +252,7 @@ void test_insert_and_init() {
  * 
  * @return void This function does not return a value.
  */
-void test_restore() {
+void test_restore(void) {
     printf("\n--------------------------\n");
     printf("   Testing MyDLLRestore\n");
     printf("--------------------------\n");
@@ -277,7 +277,7 @@ void test_restore() {
  *
  * @return Always returns 0 if all tests pass.
  */
-int main() {
+int main(void) {
     dll = MyDLLInit(SIZE);
 
     test_insert_and_remove();
