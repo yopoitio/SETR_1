@@ -7,7 +7,7 @@ add_subdirectory(src/DLL)
 add_executable(exec src/main.c)
 
 list(APPEND EXTRA_LIBS DLL_Lib)
-list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/src/DLL" "${PROJECT_SOURCE_DIR}/include/DLL")
+list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/src/DLL")
 
 target_link_libraries(exec PUBLIC ${EXTRA_LIBS})
 
